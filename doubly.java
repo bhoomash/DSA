@@ -92,7 +92,24 @@ public class doubly{
             }
             t.pre.next=null;
         }
-        
+        void deleteatposition(int pod){
+            if(head==null){
+                System.out.println("List is empty");
+            }
+            Node t=head;
+            for(int k=1;k<pod-1 && t!=null;k++){
+                t=t.next;
+            }
+            if(t==null){
+                System.out.print("Invalid position");
+                return;
+            }
+            Node p;
+            p=t.next;
+            t.next=t.next.next;
+            p.next.pre=t;
+            
+        }
         void display(){
             Node t=head;
             while(t!=null){
@@ -120,6 +137,8 @@ public class doubly{
         
         // l.deleteatend();
         
+        int pod=in.nextInt();
+        l.deleteatposition(pod);
         l.display();
         in.close();
         
