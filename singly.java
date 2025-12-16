@@ -8,7 +8,7 @@ class Node{
         this.next=null;
     }
 }
-public class Main{
+public class singly{
      static class Single{
         Node head;
         void insertatend(int val){
@@ -110,5 +110,6 @@ public class Main{
         // l.deleteatend();
 
         l.display();
+        in.close();
     }
 }
