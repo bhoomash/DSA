@@ -82,6 +82,21 @@ public class singly{
             }
             t.next=null;
         }
+        void deleteatposition(int pod){
+            if(head==null){
+                System.out.println("List is empty");
+                return;
+            }
+            Node t=head;
+            for(int k=1;k<pod-1 && t!=null;k++ ){
+                t=t.next;
+            }
+            if(t==null){
+                System.out.println("Invalid position");
+                return;
+            }
+            t.next=t.next.next;
+        }
         void display(){
             Node t=head;
             while(t!=null){
@@ -108,7 +123,10 @@ public class singly{
         // l.deleteatbegin();
         
         // l.deleteatend();
-
+        
+        int pod=in.nextInt();
+        l.deleteatposition(pod);
+        
         l.display();
         in.close();
     }
