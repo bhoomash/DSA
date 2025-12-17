@@ -38,7 +38,7 @@ class BinaryTree{
         System.out.print("-"+root.val);
     }
 }
-public class Binarybft {
+public class binaryDft{
     public static void main(String args[]){
         BinaryTree k=new BinaryTree();
         Node root=new Node(5);

@@ -2,16 +2,14 @@ import java.util.*;
 class Node{
     int val;
     Node next;
-    Node pre;
     
     Node(int val){
         this.val=val;
         this.next=null;
-        this.pre=null;
     }
 }
-public class doubly{
-    static class Double{
+public class singlyLinkedList{
+     static class Single{
         Node head;
         void insertatend(int val){
             Node nn=new Node(val);
@@ -24,12 +22,10 @@ public class doubly{
                 t=t.next;
             }
             t.next=nn;
-            nn.pre=t;
         }
         void insertatbegin(int val){
             Node nn=new Node(val);
             nn.next=head;
-            nn.pre=null;
             head=nn;
         }
         void insertatposition(int val,int pos){
@@ -44,14 +40,10 @@ public class doubly{
                 t=t.next;
             }
             if(t==null){
-                System.out.println("Invalid position");
+                System.out.print("Invalid position");
                 return;
             }
             nn.next=t.next;
-            nn.pre=nn;
-            if(t.next==null){
-                t.next.pre=null;
-            }
             t.next=nn;
         }
         void search(int key){
@@ -59,15 +51,14 @@ public class doubly{
             int p=0;
             while(t!=null){
                 if(t.val==key){
-                    System.out.println("Key is found in the index position "+p);
+                    System.out.println("Key was found on the index "+p);
                     return;
                 }
                 t=t.next;
                 p++;
             }
-            System.out.println("Key is not found");
+            System.out.println("Key was not found");
             return;
-            
         }
         void deleteatbegin(){
             if(head==null){
@@ -75,61 +66,57 @@ public class doubly{
                 return;
             }
             head=head.next;
-            head.next.pre=null;
         }
         void deleteatend(){
             if(head==null){
-                System.out.println("List is Empty");
+                System.out.println("List is empty");
                 return;
             }
-            if(head.next==null){
-                head=null;
-                return;
-            }
+            // if(head.next == null){
+            // head = null;
+            // return;
+            // }
             Node t=head;
-            while(t.next!=null){
+            while(t.next.next!=null){
                 t=t.next;
             }
-            t.pre.next=null;
+            t.next=null;
         }
         void deleteatposition(int pod){
             if(head==null){
                 System.out.println("List is empty");
+                return;
             }
             Node t=head;
-            for(int k=1;k<pod-1 && t!=null;k++){
+            for(int k=1;k<pod-1 && t!=null;k++ ){
                 t=t.next;
             }
             if(t==null){
-                System.out.print("Invalid position");
+                System.out.println("Invalid position");
                 return;
             }
-            Node p;
-            p=t.next;
             t.next=t.next.next;
-            p.next.pre=t;
-            
         }
         void display(){
             Node t=head;
             while(t!=null){
                 System.out.print(t.val+" -> ");
                 t=t.next;
-            }
+                }
             System.out.print("null");
         }
     }
     public static void main(String args[]){
         Scanner in=new Scanner(System.in);
         int n=in.nextInt();
-        Double l=new Double();
+        Single l=new Single();
         for(int i=0;i<n;i++){
             l.insertatend(in.nextInt());
         }
         // int pos=in.nextInt();
         // int val=in.nextInt();
         // l.insertatposition(val,pos);
-
+        
         // int key=in.nextInt();
         // l.search(key);
         
@@ -139,8 +126,8 @@ public class doubly{
         
         int pod=in.nextInt();
         l.deleteatposition(pod);
+        
         l.display();
         in.close();
-        
     }
 }
